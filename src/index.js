@@ -20,7 +20,7 @@ const logFunctionExecution = require("./middleware/log");
 const app = express();
 app.use(cors());
 
-const port = 8080;
+const port = 443;
 
 // Use body-parser middleware
 app.use(bodyParser.json());
