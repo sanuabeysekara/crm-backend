@@ -1,5 +1,4 @@
 const http = require("http");
-const https = require("https");
 const fs = require("fs");
 const path = require("path");
 const express = require("express");
@@ -20,7 +19,7 @@ const logFunctionExecution = require("./middleware/log");
 const app = express();
 app.use(cors());
 
-const port = 8080;
+const port = 80;
 
 // Use body-parser middleware
 app.use(bodyParser.json());
@@ -48,14 +47,11 @@ app.use("/api", statusRoutes);
 app.use("/api", folowUpRoutes);
 app.use("/api", sourceRoutes);
 
-const httpsOptions = {
-  key: fs.readFileSync(path.join(__dirname, "../server.key")),
-  cert: fs.readFileSync(path.join(__dirname, "../server.cert")),
-};
+
 
 // Create an HTTP server and listen on the specified port
-const server = https.createServer(httpsOptions, app);
+const server = http.createServer(app);
 
 server.listen(port, () => {
-  console.log(`Server running at https://localhost:${port}/`);
+  console.log(`Server running at http://localhost:${port}/`);
 });
