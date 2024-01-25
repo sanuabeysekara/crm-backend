@@ -49,8 +49,8 @@ app.use("/api", folowUpRoutes);
 app.use("/api", sourceRoutes);
 
 const httpsOptions = {
-  key: fs.readFileSync(path.join(__dirname, "../server.key")),
-  cert: fs.readFileSync(path.join(__dirname, "../server.cert")),
+  key: fs.readFileSync(path.join(__dirname, "../client-key.pem")),
+  cert: fs.readFileSync(path.join(__dirname, "../client-cert.pem")),
 };
 
 // Create an HTTP server and listen on the specified port
